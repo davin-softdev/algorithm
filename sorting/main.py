@@ -1,4 +1,5 @@
 import time
+from algorithms.double_selection_sort import DoubleSelectionSorting
 from algorithms.selection_sort import SelectionSorting
 from context import SortContext
 from algorithms.normal_sorting import NormalSorting
@@ -36,20 +37,20 @@ def measure_time(sort_strategy, data):
 
     return sorted_data, elapsed_time, sort_strategy.steps
 
+def display_sorted_data_by_algorithms(algorithm, sorted_data):
+    ## Run the algorithm and measure time
+    sorted_data, elapsed_time, steps = measure_time(algorithm(), sorted_data)
+    ## Print the result with the class name, then we can know which algorithm is being used
+    print(f"{algorithm.__class__.__name__}: -> {elapsed_time}")
+
+    print(f"Steps: {steps}")
+
 def main():
     data = generate_random_array(size=10000)
 
-    sorted_data, elapsed_time, steps = measure_time(NormalSorting(), data.copy())
-
-    print(f"NormalSorting: -> {elapsed_time}")
-
-    print(f"Steps: {steps}")
-
-    sorted_data, elapsed_time, steps = measure_time(SelectionSorting(), data.copy())
-
-    print(f"SelectionSorting: -> {elapsed_time}")
-
-    print(f"Steps: {steps}")
+    display_sorted_data_by_algorithms(NormalSorting, data.copy())
+    display_sorted_data_by_algorithms(SelectionSorting, data.copy())
+    display_sorted_data_by_algorithms(DoubleSelectionSorting, data.copy())
 
 if __name__ == "__main__":
     main()
