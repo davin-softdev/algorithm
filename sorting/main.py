@@ -1,4 +1,5 @@
 import time
+from algorithms.selection_sort import SelectionSorting
 from context import SortContext
 from algorithms.normal_sorting import NormalSorting
 import random
@@ -41,6 +42,12 @@ def main():
     sorted_data, elapsed_time, steps = measure_time(NormalSorting(), data.copy())
 
     print(f"NormalSorting: -> {elapsed_time}")
+
+    print(f"Steps: {steps}")
+
+    sorted_data, elapsed_time, steps = measure_time(SelectionSorting(), data.copy())
+
+    print(f"SelectionSorting: -> {elapsed_time}")
 
     print(f"Steps: {steps}")
 
