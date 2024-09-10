@@ -39,5 +39,4 @@ class DoubleSelectionSorting(SortingStrategy):
 
                 # Update progress bar based on the number of sorted elements
                 pbar.update(2)
-
         return data

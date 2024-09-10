@@ -1,4 +1,6 @@
 import time
+from algorithms.binary_insertion_sort import BinaryInsertionSorting
+from algorithms.insertion_sort import InsertionSorting
 from algorithms.double_selection_sort import DoubleSelectionSorting
 from algorithms.selection_sort import SelectionSorting
 from context import SortContext
@@ -37,20 +39,26 @@ def measure_time(sort_strategy, data):
 
     return sorted_data, elapsed_time, sort_strategy.steps
 
-def display_sorted_data_by_algorithms(algorithm, sorted_data):
+def display_sorted_data_by_algorithms(name, algorithm, sorted_data):
     ## Run the algorithm and measure time
     sorted_data, elapsed_time, steps = measure_time(algorithm(), sorted_data)
     ## Print the result with the class name, then we can know which algorithm is being used
-    print(f"{algorithm.__class__.__name__}: -> {elapsed_time}")
+    print(f"{name}: -> {elapsed_time}")
 
     print(f"Steps: {steps}")
+    return sorted_data
 
 def main():
     data = generate_random_array(size=10000)
 
-    display_sorted_data_by_algorithms(NormalSorting, data.copy())
-    display_sorted_data_by_algorithms(SelectionSorting, data.copy())
-    display_sorted_data_by_algorithms(DoubleSelectionSorting, data.copy())
+    # normal_sorted = display_sorted_data_by_algorithms("normal sorting",NormalSorting, data.copy())
+    # selection_sorted = display_sorted_data_by_algorithms("selection sorting",SelectionSorting, data.copy())
+    # double_selection_sorted =display_sorted_data_by_algorithms("double selection sorting",DoubleSelectionSorting, data.copy())
+    insertion_sorted = display_sorted_data_by_algorithms("insertion sorting",InsertionSorting, data.copy())
+    binary_insertion_sorted = display_sorted_data_by_algorithms("binary insertion sorting",BinaryInsertionSorting, data.copy())
+
+    # print(binary_insertion_sorted == normal_sorted == selection_sorted == double_selection_sorted == insertion_sorted)
+    print(binary_insertion_sorted == insertion_sorted)
 
 if __name__ == "__main__":
     main()
