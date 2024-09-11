@@ -1,4 +1,11 @@
 import time
+from algorithms.merge_sort import MergeSorting
+from algorithms.heap_sort import HeapSorting
+from algorithms.quick_sort import QuickSorting
+from algorithms.shaker_sort import ShakerSorting
+from algorithms.comb_sort import CombSorting
+from algorithms.shell_sort import ShellSorting
+from algorithms.bubble_sort import BubbleSorting
 from algorithms.binary_insertion_sort import BinaryInsertionSorting
 from algorithms.insertion_sort import InsertionSorting
 from algorithms.double_selection_sort import DoubleSelectionSorting
@@ -49,16 +56,24 @@ def display_sorted_data_by_algorithms(name, algorithm, sorted_data):
     return sorted_data
 
 def main():
-    data = generate_random_array(size=10000)
+    data = generate_random_array(size=30000)
 
     # normal_sorted = display_sorted_data_by_algorithms("normal sorting",NormalSorting, data.copy())
     # selection_sorted = display_sorted_data_by_algorithms("selection sorting",SelectionSorting, data.copy())
     # double_selection_sorted =display_sorted_data_by_algorithms("double selection sorting",DoubleSelectionSorting, data.copy())
-    insertion_sorted = display_sorted_data_by_algorithms("insertion sorting",InsertionSorting, data.copy())
+    # insertion_sorted = display_sorted_data_by_algorithms("insertion sorting",InsertionSorting, data.copy())
     binary_insertion_sorted = display_sorted_data_by_algorithms("binary insertion sorting",BinaryInsertionSorting, data.copy())
+    # bubble_sorted = display_sorted_data_by_algorithms("bubble sorting",BubbleSorting, data.copy())
+    # shaker_sorted = display_sorted_data_by_algorithms("shaker sorting",ShakerSorting, data.copy())
+    quick_sorted = display_sorted_data_by_algorithms("quick sorting",QuickSorting, data.copy())
+    merge_sort_sorted = display_sorted_data_by_algorithms("merge sorting",MergeSorting, data.copy())
+    heap_sort_sorted = display_sorted_data_by_algorithms("heap sorting",HeapSorting, data.copy())
+    comb_sorted = display_sorted_data_by_algorithms("comb sorting",CombSorting, data.copy())
+    shell_sorted = display_sorted_data_by_algorithms("Shell sorting", ShellSorting, data.copy())
 
     # print(binary_insertion_sorted == normal_sorted == selection_sorted == double_selection_sorted == insertion_sorted)
-    print(binary_insertion_sorted == insertion_sorted)
+    print(binary_insertion_sorted == quick_sorted == shell_sorted == merge_sort_sorted == heap_sort_sorted == comb_sorted)
+    # print(bubble_sorted)
 
 if __name__ == "__main__":
     main()
